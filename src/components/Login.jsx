@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const navigate = useNavigate();
+  const [successfullyLogedIn, setSuccessfullyLogedIn] = useState(false);
 
   const [user, setUser] = useState({
     email: "",
@@ -41,6 +42,7 @@ const Login = () => {
         };
         const getResponse = await fetch(getUrl, getOptions);
         if (getResponse.ok) {
+          setSuccessfullyLogedIn(true);
           const authors = await getResponse.json();
           console.log(authors);
         }
@@ -88,12 +90,26 @@ const Login = () => {
             <Button
               variant="primary"
               type="submit"
-              // onClick={() => {
-              //   navigate("/");
-              // }}
+              onClick={() => {
+                if (successfullyLogedIn === true) {
+                  navigate("/");
+                }
+              }}
             >
               Submit
             </Button>
+            <Row className={"justify-content-center mt-5"}>
+              <Col xs={12} md={6}>
+                <div>OR</div>
+              </Col>
+            </Row>
+            <Row className={"justify-content-center mt-5"}>
+              <Col xs={12} md={6}>
+                <a href="http://localhost:3001/authors/googleLogin">
+                  <Button> Login with Google</Button>
+                </a>
+              </Col>
+            </Row>
           </Form>
         </Col>
       </Row>

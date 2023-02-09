@@ -5,7 +5,8 @@ const Home = () => {
     <Container>
       <Row className={"justify-content-center mt-5"}>
         <Col xs={12} md={6}>
-          <div>HOME PAGE</div>
+          <div className="my-5">HOME PAGE</div>
+          <div>Congratulations! You loged in successfully!</div>
         </Col>
       </Row>
     </Container>
