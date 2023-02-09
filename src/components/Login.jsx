@@ -31,6 +31,8 @@ const Login = () => {
       };
       const response = await fetch(loginUrl, postOptions);
       if (response.ok) {
+        navigate("/");
+
         const result = await response.json();
         console.log(result);
         const getUrl = "http://localhost:3001/authors";
@@ -42,7 +44,6 @@ const Login = () => {
         };
         const getResponse = await fetch(getUrl, getOptions);
         if (getResponse.ok) {
-          setSuccessfullyLogedIn(true);
           const authors = await getResponse.json();
           console.log(authors);
         }
